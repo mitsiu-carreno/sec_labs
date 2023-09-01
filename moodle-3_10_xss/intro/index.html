@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Intro XSS</title>
+</head>
+
+<body>
+  <div style="font-size:30px">
+    <h1 id="title">This is a h1 XSS</h1>
+    <p id="description">Enter your first payload!</p>
+    <textarea id="payload" row="5"></textarea>
+    <button onclick="do_something()">Click to exec!</button>
+  </div>
+  <script>
+    function do_something(){
+      document.getElementById("description").innerHTML = document.getElementById("payload").value;
+    }
+  </script>
+</body>
