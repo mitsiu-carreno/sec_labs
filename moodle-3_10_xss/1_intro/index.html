@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Intro XSS</title>
+</head>
+
+<body onload="pageLoaded()">
+  <div style="font-size:30px">
+    <h1 id="title" style="height:12px">XSS</h1>
+    <div style="display:flex; justify-content:left">
+      <p>Hola:&nbsp;</p><p id="saludo"></p>
+    </div>
+    <textarea id="payload" rows="5" placeholder="Ingresa tu nombre" style="width:90%"></textarea>
+    <button onclick="updateSaludo()">Click to exec!</button>
+  </div>
+  <script>
+    function updateSaludo(){
+      document.getElementById("saludo").innerHTML = document.getElementById("payload").value;
+    }
+    function pageLoaded(){
+      let param = window.location.search
+      parameterList = new URLSearchParams(param);
+      document.getElementById("saludo").innerHTML = parameterList.get("name")
+    }
+  </script>
+</body>

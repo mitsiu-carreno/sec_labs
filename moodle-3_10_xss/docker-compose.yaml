@@ -29,3 +29,15 @@ services:
       - mariadb
     links:
       - mariadb:mariadb
+
+  catcher:
+    build:
+      context: ./node_catcher
+      dockerfile: ./Dockerfile
+    image: nodejs
+    container_name: nodejs_catcher
+    restart: unless-stopped
+    ports:  
+      - 9090:9090
+    command: node index.js
+
