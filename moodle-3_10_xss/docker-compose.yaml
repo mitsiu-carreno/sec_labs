@@ -4,7 +4,7 @@ services:
   mariadb:
     image: mariadb
     volumes:
-      - ./database:/var/lib/mysql
+      - ./docker_vols/database:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=moodle
       - MYSQL_ROOT_USER=root
@@ -23,8 +23,8 @@ services:
       - PUID=998
       - PGID=100
     volumes:
-      - ./moodle:/bitnami/moodle
-      - ./moodledata:/bitnami/moodledata
+      - ./docker_vols/moodle:/bitnami/moodle
+      - ./docker_vols/moodledata:/bitnami/moodledata
     depends_on:
       - mariadb
     links:

@@ -6,6 +6,9 @@ This project set's up a containerized moodle + mariadb in which we can create an
 ## Usage
 ### Container setup
 ```sh
+$ docker-compose build
+```
+```sh
 $ docker-compose up
 ```
 
